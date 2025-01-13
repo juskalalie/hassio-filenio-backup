@@ -17,6 +17,5 @@ jobs:
           days-before-issue-stale: 90
           days-before-issue-close: 95
           exempt-issue-labels: Do this next
-          exempt-asignee: sabeechen
-          close-issue-reason: wontfix
+          exempt-assignees: sabeechen
           debug-only: true
