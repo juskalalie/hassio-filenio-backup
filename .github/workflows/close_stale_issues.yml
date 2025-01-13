@@ -19,3 +19,4 @@ jobs:
           days-before-issue-close: 95
           exempt-issue-labels: Do this next
           exempt-assignees: sabeechen
+          operations-per-run: 200
