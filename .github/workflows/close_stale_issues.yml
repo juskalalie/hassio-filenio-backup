@@ -1,7 +1,10 @@
 name: Close Stale Issues
 on: 
   workflow_dispatch:
-
+    inputs:
+      debug_only:
+        type: boolean
+        default: true
 jobs:
   stale:
     runs-on: ubuntu-latest
@@ -20,4 +23,4 @@ jobs:
           days-before-issue-close: 95
           exempt-issue-labels: Do this next
           exempt-assignees: sabeechen
-          debug-only: true
+          debug-only: ${inputs.debug_only}
