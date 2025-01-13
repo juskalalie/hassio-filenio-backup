@@ -1,12 +1,12 @@
 name: Close Stale Issues
 on: 
   workflow_dispatch:
+permissions:
+  issues: write
+  pull-requests: write
 jobs:
   stale:
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
-      pull-requests: write
     steps:
       - name: Process Stale Issues
         uses: actions/stale@v9
