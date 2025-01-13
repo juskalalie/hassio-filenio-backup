@@ -1,17 +1,18 @@
 name: Close Stale Issues
 on: 
   workflow_dispatch:
-permissions:
-  issues: write
-  pull-requests: write
 
 jobs:
   stale:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
     steps:
-      - uses: actions/stale@v9
+      - name: Process Stale Issues
+        uses: actions/stale@v9
         with:
-          stale-issue-message: 'This issue is being automatically marked stale in an attempt to prioritize ongoing maintinence to the project, and will be closed in 5 days.  Respond in the issue if you'd like it to be kept open.'
+          stale-issue-message: "This issue is being automatically marked stale in an attempt to prioritize ongoing maintinence to the project, and will be closed in 5 days.  Respond in the issue if you'd like it to be kept open."
           close-issue-message: 'This issue was closed closed automatically in an attempt to prioritize ongoing maintinence of the project.  Please re-open and comment if you think this was an error.'
           days-before-issue-stale: 90
           days-before-issue-close: 95
