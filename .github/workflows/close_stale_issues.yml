@@ -1,10 +1,6 @@
 name: Close Stale Issues
 on: 
   workflow_dispatch:
-    inputs:
-      debug_only:
-        type: boolean
-        default: true
 jobs:
   stale:
     runs-on: ubuntu-latest
@@ -16,11 +12,10 @@ jobs:
         uses: actions/stale@v9
         with:
           days-before-close: -1
-          days_before-stale: -1
+          days-before-stale: -1
           stale-issue-message: "This issue is being automatically marked stale in an attempt to prioritize ongoing maintinence to the project, and will be closed in 5 days.  Respond in the issue if you'd like it to be kept open."
           close-issue-message: 'This issue was closed closed automatically in an attempt to prioritize ongoing maintinence of the project.  Please re-open and comment if you think this was an error.'
           days-before-issue-stale: 90
           days-before-issue-close: 95
           exempt-issue-labels: Do this next
           exempt-assignees: sabeechen
-          debug-only: ${inputs.debug_only}
