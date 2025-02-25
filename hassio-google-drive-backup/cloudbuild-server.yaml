@@ -1,5 +1,5 @@
 # How to use:
-#    gcloud config set project hassio-drive-backup 
+#    gcloud config set project hassio-filenio-backup 
 #    gcloud builds submit --config cloudbuild-server.yaml
 
 #steps:
