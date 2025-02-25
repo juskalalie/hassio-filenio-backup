@@ -2,7 +2,7 @@
 
 ## About the project
 
-The project is mostly maintained by Stephen Beechen (stephen@beechens.com) whom you can reach out to for guidance. Before digging in to this, you might be helpful to familiarize yourself with some of the technologies used in the project.
+The project is mostly maintained by juskalalie@gmail.com, and is a fork from [the original Google Drive backup add-on](https://github.com/sabeechen/hassio-google-drive-backup) from Stephen Beechen (stephen@beechens.com). Before digging in to this, you might be helpful to familiarize yourself with some of the technologies used in the project.
 
 - [Developing Addons for Home Assistant](https://developers.home-assistant.io/docs/add-ons) - Useful to understand how addons work.
 - [Python](https://www.python.org/) - The addon is written in Python 3.11 and makes heavy use of the asyncio framework.
