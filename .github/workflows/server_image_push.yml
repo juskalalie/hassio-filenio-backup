@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build image
-        run: docker build -f hassio-google-drive-backup/Dockerfile-server --tag $IMAGE_NAME --label "runnumber=${GITHUB_RUN_ID}" hassio-google-drive-backup/.
+        run: docker build -f hassio-filenio-backup/Dockerfile-server --tag $IMAGE_NAME --label "runnumber=${GITHUB_RUN_ID}" hassio-filenio-backup/.
 
       - name: Log in to registry
         # This is where you will update the PAT to GITHUB_TOKEN
