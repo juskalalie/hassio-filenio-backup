@@ -29,5 +29,5 @@ jobs:
       with:
         args: |
           --all \
-          --target dev/hassio-google-drive-backup \
+          --target dev/hassio-filenio-backup \
           --docker-hub "ghcr.io/sabeechen"
