@@ -12,7 +12,7 @@
             "label": "Install addon libraries",
             "type": "process",
             "command": "${config:python.pythonPath}",
-            "args": ["-m", "pip", "install", "-e", "hassio-google-drive-backup/"],
+            "args": ["-m", "pip", "install", "-e", "hassio-filenio-backup/"],
             "problemMatcher": [],
             "group": {
                 "kind": "build",
@@ -34,7 +34,7 @@
             "label": "[Re]create and run local addon",
             "type": "process",
             "command": "${config:python.pythonPath}",
-            "args": ["-m", "hassio-google-drive-backup.dev.deploy_local_addon"],
+            "args": ["-m", "hassio-filenio-backup.dev.deploy_local_addon"],
             "problemMatcher": [],
             "group": {
                 "kind": "build",
