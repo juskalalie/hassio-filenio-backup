@@ -1,12 +1,12 @@
-# Home Assistant Google Drive Backup
+# Home Assistant filen.io Backup
 
 ![screenshot](images/screenshot.png)
 
 ## About
 
-A complete and easy way to back up Home Assistant to Google Drive.
+A complete and easy way to back up Home Assistant to filen.io.
 
-This is for you if you want to quickly set up a backup strategy without much fuss. It doesn't require much familiarity with Home Assistant, its architecture, or Google Drive. Detailed install instructions are provided below but you can just add this repo, click install and open the Web UI. It will tell you what to do and only takes a few simple clicks.  [Detailed install instructions are below](#detailed-install-instructions) if that doesn't seem clear.
+This is for you if you want to quickly set up a backup strategy without much fuss. It doesn't require much familiarity with Home Assistant, its architecture, or filen.io. Detailed install instructions are provided below but you can just add this repo, click install and open the Web UI. It will tell you what to do and only takes a few simple clicks.  [Detailed install instructions are below](#detailed-install-instructions) if that doesn't seem clear.
 
 ### Features Overview
 
