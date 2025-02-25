@@ -18,3 +18,4 @@ firebase-admin
 pytz
 tzlocal
 aioping
+pycryptodome
