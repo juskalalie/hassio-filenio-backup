@@ -95,7 +95,7 @@ class Server():
                     raise
                 self.logError(request, e)
                 content = "The server encountered an error while processing this request: " + str(e) + "<br/>"
-                content += "Please <a href='https://github.com/sabeechen/hassio-filenio-backup/issues'>file an issue</a> on Home Assistant Google Backup's GitHub page so I'm aware of this problem or attempt authorizing with Google Drive again."
+                content += "Please <a href='https://github.com/juskalalie/hassio-filenio-backup/issues'>file an issue</a> on Home Assistant Google Backup's GitHub page so I'm aware of this problem or attempt authorizing with Google Drive again."
                 return Response(status=500, body=content)
         else:
             raise HTTPBadRequest()

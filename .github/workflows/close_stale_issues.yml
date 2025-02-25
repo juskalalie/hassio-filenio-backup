@@ -20,5 +20,5 @@ jobs:
           days-before-issue-stale: 90
           days-before-issue-close: 95
           exempt-issue-labels: Do this next
-          exempt-assignees: sabeechen
+          exempt-assignees: juskalalie
           operations-per-run: 200

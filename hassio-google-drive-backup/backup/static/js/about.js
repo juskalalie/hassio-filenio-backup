@@ -1,11 +1,11 @@
 let contributorsLoaded = false;
 
-const CONTRIBUTORS_API_URL = "https://api.github.com/repos/sabeechen/hassio-filenio-backup/contributors";
-const CONTRIBUTOR_COMMIT_URL = "https://github.com/sabeechen/hassio-filenio-backup/commits?author={AUTHOR}";
+const CONTRIBUTORS_API_URL = "https://api.github.com/repos/juskalalie/hassio-filenio-backup/contributors";
+const CONTRIBUTOR_COMMIT_URL = "https://github.com/juskalalie/hassio-filenio-backup/commits?author={AUTHOR}";
 const CONTRIBUTORS_COUNT_TO_SHOW = 14;
 
 const EXTRA_CONTRIBUTORS = {
-  "sabeechen": "Original author. Did most of this.",
+  "juskalalie": "Original author. Did most of this.",
   "ericmatte": "Redesigned the UI with divine HTML and CSS wizardry.",
   "jhampson-dbre": "Fixed a really nasty timing bug.",
 };

@@ -30,4 +30,4 @@ jobs:
         args: |
           --all \
           --target dev/hassio-filenio-backup \
-          --docker-hub "ghcr.io/sabeechen"
+          --docker-hub "ghcr.io/juskalalie"

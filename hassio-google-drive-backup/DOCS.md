@@ -2,7 +2,7 @@
 
 ## Installation
 
-To install the add-on, first follow the installation steps from the [README on GitHub](https://github.com/sabeechen/hassio-filenio-backup#installation).
+To install the add-on, first follow the installation steps from the [README on GitHub](https://github.com/juskalalie/hassio-filenio-backup#installation).
 
 ## Configuration
 
@@ -132,11 +132,11 @@ When set, backups are created with a password. You can use a value from your sec
 
 ### Option: `backup_name` (default: "{type} Backup {year}-{month}-{day} {hr24}:{min}:{sec}")
 
-Sets the name for new backups. Variable parameters of the form `{variable_name}` can be used to modify the name to your liking. A list of available variables is available [here](https://github.com/sabeechen/hassio-filenio-backup#can-i-give-backups-a-different-name).
+Sets the name for new backups. Variable parameters of the form `{variable_name}` can be used to modify the name to your liking. A list of available variables is available [here](https://github.com/juskalalie/hassio-filenio-backup#can-i-give-backups-a-different-name).
 
 ### Option: `generational_*`
 
-When set, older backups will be kept longer using a [generational backup scheme](https://en.wikipedia.org/wiki/Backup_rotation_scheme). See the [question here](https://github.com/sabeechen/hassio-filenio-backup#can-i-keep-older-backups-for-longer) for configuration options.
+When set, older backups will be kept longer using a [generational backup scheme](https://en.wikipedia.org/wiki/Backup_rotation_scheme). See the [question here](https://github.com/juskalalie/hassio-filenio-backup#can-i-keep-older-backups-for-longer) for configuration options.
 
 ### Option: `exclude_folders`
 
@@ -150,15 +150,15 @@ _Note_: Folders and add-ons must be identified by their "slug" name. It is recom
 
 ### Option: `enable_backup_stale_sensor` (default: True)
 
-When false, the add-on will not publish the [binary_sensor.backups_stale](https://github.com/sabeechen/hassio-filenio-backup#how-will-i-know-this-will-be-there-when-i-need-it) stale sensor.
+When false, the add-on will not publish the [binary_sensor.backups_stale](https://github.com/juskalalie/hassio-filenio-backup#how-will-i-know-this-will-be-there-when-i-need-it) stale sensor.
 
 ### Option: `enable_backup_state_sensor` (default: True)
 
-When false, the add-on will not publish the [sensor.backup_state](https://github.com/sabeechen/hassio-filenio-backup#how-will-i-know-this-will-be-there-when-i-need-it) sensor.
+When false, the add-on will not publish the [sensor.backup_state](https://github.com/juskalalie/hassio-filenio-backup#how-will-i-know-this-will-be-there-when-i-need-it) sensor.
 
 ### Option: `notify_for_stale_backups` (default: True)
 
-When false, the add-on will send a [persistent notification](https://github.com/sabeechen/hassio-filenio-backup#how-will-i-know-this-will-be-there-when-i-need-it) in Home Assistant when backups are stale.
+When false, the add-on will send a [persistent notification](https://github.com/juskalalie/hassio-filenio-backup#how-will-i-know-this-will-be-there-when-i-need-it) in Home Assistant when backups are stale.
 
 ---
 
@@ -202,4 +202,4 @@ When true, backups are always deleted after they've been uploaded to Google Driv
 
 ## FAQ
 
-Read the [FAQ on GitHub](https://github.com/sabeechen/hassio-filenio-backup#faq).
+Read the [FAQ on GitHub](https://github.com/juskalalie/hassio-filenio-backup#faq).

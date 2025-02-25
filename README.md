@@ -5,7 +5,7 @@
 ## About
 
 A complete and easy way to back up Home Assistant to filen.io.
-Based on [the original Google Drive backup add-on](https://github.com/sabeechen/hassio-filenio-backup) from Stephen Beechen.
+Based on [the original Google Drive backup add-on](https://github.com/juskalalie/hassio-filenio-backup) from Stephen Beechen.
 
 This is for you if you want to quickly set up a backup strategy without much fuss. It doesn't require much familiarity with Home Assistant, its architecture, or filen.io. Detailed install instructions are provided below but you can just add this repo, click install and open the Web UI. It will tell you what to do and only takes a few simple clicks.  [Detailed install instructions are below](#detailed-install-instructions) if that doesn't seem clear.
 
@@ -31,10 +31,10 @@ This addon has been featured by %YOUR_FAVORITE_HA_YOUTUBER% and is often listed 
 
 >This project requires financial support to make the Google Drive integration work, but it is free for you to use.  You can join those helping to keep the lights on at:
 >  
->[<img src="images/bmc-button.svg" width=150 height=40 style="margin: 5px"/>](https://www.buymeacoffee.com/sabeechen)
+>[<img src="images/bmc-button.svg" width=150 height=40 style="margin: 5px"/>](https://www.buymeacoffee.com/juskalalie)
 >[<img src="images/paypal-button.svg" width=150 height=40 style="margin: 5px"/>](https://www.paypal.com/paypalme/stephenbeechen)
 >[<img src="images/patreon-button.svg" width=150 height=40 style="margin: 5px"/>](https://www.patreon.com/bePatron?u=4064183)
->[<img src="images/github-sponsors-button.svg" width=150 height=40 style="margin: 5px"/>](https://github.com/sponsors/sabeechen)
+>[<img src="images/github-sponsors-button.svg" width=150 height=40 style="margin: 5px"/>](https://github.com/sponsors/juskalalie)
 >[<img src="images/monero-button.svg" width=150 height=40 style="margin: 5px"/>](donate-crypto.md)
 >[<img src="images/bitcoin-button.svg" width=150 height=40 style="margin: 5px"/>](donate-crypto.md)
 >[<img src="images/ethereum-button.svg" width=150 height=40 style="margin: 5px"/>](donate-crypto.md)
@@ -44,7 +44,7 @@ This addon has been featured by %YOUR_FAVORITE_HA_YOUTUBER% and is often listed 
 ### Detailed Install Instructions
 1. Navigate in your Home Assistant frontend to <kbd>Settings</kbd> -> <kbd>Add-ons</kbd> -> <kbd>Add-on Store (Bottom Right)</kbd>.
 
-2. Click the 3-dots menu at upper right <kbd>...</kbd> > <kbd>Repositories</kbd> and add this repository's URL: [https://github.com/sabeechen/hassio-filenio-backup](https://github.com/sabeechen/hassio-filenio-backup)
+2. Click the 3-dots menu at upper right <kbd>...</kbd> > <kbd>Repositories</kbd> and add this repository's URL: [https://github.com/juskalalie/hassio-filenio-backup](https://github.com/juskalalie/hassio-filenio-backup)
 
    <img src="images/add_ss.png" width="300"/>
 
@@ -151,7 +151,7 @@ You can add `"backup_time_of_day": "13:00"` to your add-on configuration to make
 
 ### Can I keep older backups for longer?
 
-> This is just an overview of how to keep older backups longer. [See here](https://github.com/sabeechen/hassio-filenio-backup/blob/master/hassio-filenio-backup/GENERATIONAL_BACKUP.md) for a more in-depth explanation.
+> This is just an overview of how to keep older backups longer. [See here](https://github.com/juskalalie/hassio-filenio-backup/blob/master/hassio-filenio-backup/GENERATIONAL_BACKUP.md) for a more in-depth explanation.
 
 The add-on can be configured to keep [generational backups](https://en.wikipedia.org/wiki/Backup_rotation_scheme) on daily, weekly, monthly, and yearly intervals instead of just deleting the oldest backup. This can be useful if, for example, you've made an erroneous change but haven't noticed for several days and all the backups before the change are gone. With a configuration setting like this...
 
@@ -227,7 +227,7 @@ Maybe. You can encrypt your backups by giving a password in the add-on's options
 On a matter of principle, I only keep track of and store information necessary for the add-on to function. To the best of my knowledge the scope of this is:
 
 - You can opt-in to sending error reports from the add-on sent to a database maintained by me. This includes the full text of the error's stack trace, the error message, and the version of the add-on you're running. This helps notice problems with new releases but leaving it off (the default unless you turn it on) doesn't affect the functionality of the add-on in any way.
-- Once authenticated with Google, your Google credentials are only stored locally on your Home Assistant instance. This isn't your actual username and password, only an opaque token returned from Google used to verify that you previously gave the Add-on permission to access your Google Drive. Your password is never seen by me or the add-on. You can read more about how authentication with Google is accomplished [here](https://github.com/sabeechen/hassio-filenio-backup/blob/master/hassio-filenio-backup/AUTHENTICATION.md).
+- Once authenticated with Google, your Google credentials are only stored locally on your Home Assistant instance. This isn't your actual username and password, only an opaque token returned from Google used to verify that you previously gave the Add-on permission to access your Google Drive. Your password is never seen by me or the add-on. You can read more about how authentication with Google is accomplished [here](https://github.com/juskalalie/hassio-filenio-backup/blob/master/hassio-filenio-backup/AUTHENTICATION.md).
 - The add-on has access to the files in Google Drive it created, which is the 'Home Assistant Backups' folder and any backups it uploads. See the https://www.googleapis.com/auth/drive.file scope in the [Drive REST API v3 Documentation](https://developers.google.com/drive/api/v3/about-auth) for details, this is the only scope the add-on requests for your account.
 - Google stores a history of information about the number of requests, number of errors, and latency of requests made by this Add-on and makes a graph of that visible to me. This is needed because Google only gives me a certain quota for requests shared between all users of the add-on, so I need to be aware if someone is abusing it.
 - The Add-on is distributed as a Docker container hosted on Docker Hub, which is how almost all add-ons work. Docker keeps track of how many people have requested an image and makes that information publicly visible.
