@@ -357,7 +357,7 @@ async def test_multiple_deletes_allowed(time, model: Model, source, dest, simple
 
     # configure keeping 1
     simple_config.config.update({
-        "max_backups_in_google_drive": 1,
+        "max_backups_in_filenio": 1,
     })
     model.reinitialize()
     await model.sync(now)
@@ -896,7 +896,7 @@ async def test_generational_delete_issue602(time: FakeTime, model: Model, dest: 
     end = time.local(2023, 5, 1, 1)
 
     simple_config.override(Setting.MAX_BACKUPS_IN_HA, 1)
-    simple_config.override(Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE, 50)
+    simple_config.override(Setting.MAX_BACKUPS_IN_FILENIO, 50)
     simple_config.override(Setting.DAYS_BETWEEN_BACKUPS, 1)
     simple_config.override(Setting.IGNORE_OTHER_BACKUPS, True)
     simple_config.override(Setting.IGNORE_UPGRADE_BACKUPS, True)
@@ -951,7 +951,7 @@ async def test_generational_delete_issue809(time: FakeTime, model: Model, dest: 
     time.setTimeZone("America/Los_Angeles")
 
     simple_config.override(Setting.MAX_BACKUPS_IN_HA, 10)
-    simple_config.override(Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE, 32)
+    simple_config.override(Setting.MAX_BACKUPS_IN_FILENIO, 32)
     simple_config.override(Setting.DAYS_BETWEEN_BACKUPS, 1)
     simple_config.override(Setting.BACKUP_TIME_OF_DAY, "02:00")
     simple_config.override(Setting.GENERATIONAL_DAYS, 7)
@@ -960,7 +960,7 @@ async def test_generational_delete_issue809(time: FakeTime, model: Model, dest: 
     simple_config.override(Setting.GENERATIONAL_YEARS, 10)
 
     source.setMax(simple_config.get(Setting.MAX_BACKUPS_IN_HA))
-    dest.setMax(simple_config.get(Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE))
+    dest.setMax(simple_config.get(Setting.MAX_BACKUPS_IN_FILENIO))
     model.reinitialize()
 
     start = time.local(2021, 1, 1)
@@ -1007,7 +1007,7 @@ async def test_generational_delete_dst_start_rome(time: FakeTime, model: Model, 
     time.setTimeZone("Europe/Rome")
 
     simple_config.override(Setting.MAX_BACKUPS_IN_HA, 1)
-    simple_config.override(Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE, 8)
+    simple_config.override(Setting.MAX_BACKUPS_IN_FILENIO, 8)
     simple_config.override(Setting.DAYS_BETWEEN_BACKUPS, 1)
     simple_config.override(Setting.BACKUP_TIME_OF_DAY, "02:00")
     simple_config.override(Setting.GENERATIONAL_DAYS, 3)
@@ -1016,7 +1016,7 @@ async def test_generational_delete_dst_start_rome(time: FakeTime, model: Model, 
     simple_config.override(Setting.GENERATIONAL_DELETE_EARLY, True)
 
     source.setMax(simple_config.get(Setting.MAX_BACKUPS_IN_HA))
-    dest.setMax(simple_config.get(Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE))
+    dest.setMax(simple_config.get(Setting.MAX_BACKUPS_IN_FILENIO))
     model.reinitialize()
 
     start = time.local(2023, 1, 1)
@@ -1054,7 +1054,7 @@ async def test_generational_delete_dst_start_los_angeles(time: FakeTime, model: 
     time.setTimeZone("America/Los_Angeles")
 
     simple_config.override(Setting.MAX_BACKUPS_IN_HA, 1)
-    simple_config.override(Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE, 8)
+    simple_config.override(Setting.MAX_BACKUPS_IN_FILENIO, 8)
     simple_config.override(Setting.DAYS_BETWEEN_BACKUPS, 1)
     simple_config.override(Setting.BACKUP_TIME_OF_DAY, "02:00")
     simple_config.override(Setting.GENERATIONAL_DAYS, 3)
@@ -1063,7 +1063,7 @@ async def test_generational_delete_dst_start_los_angeles(time: FakeTime, model: 
     simple_config.override(Setting.GENERATIONAL_DELETE_EARLY, True)
 
     source.setMax(simple_config.get(Setting.MAX_BACKUPS_IN_HA))
-    dest.setMax(simple_config.get(Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE))
+    dest.setMax(simple_config.get(Setting.MAX_BACKUPS_IN_FILENIO))
     model.reinitialize()
 
     start = time.local(2023, 1, 1)
@@ -1101,7 +1101,7 @@ async def test_generational_delete_dst_start_rome_2_30(time: FakeTime, model: Mo
     time.setTimeZone("Europe/Rome")
 
     simple_config.override(Setting.MAX_BACKUPS_IN_HA, 1)
-    simple_config.override(Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE, 8)
+    simple_config.override(Setting.MAX_BACKUPS_IN_FILENIO, 8)
     simple_config.override(Setting.DAYS_BETWEEN_BACKUPS, 1)
     simple_config.override(Setting.BACKUP_TIME_OF_DAY, "02:30")
     simple_config.override(Setting.GENERATIONAL_DAYS, 3)
@@ -1110,7 +1110,7 @@ async def test_generational_delete_dst_start_rome_2_30(time: FakeTime, model: Mo
     simple_config.override(Setting.GENERATIONAL_DELETE_EARLY, True)
 
     source.setMax(simple_config.get(Setting.MAX_BACKUPS_IN_HA))
-    dest.setMax(simple_config.get(Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE))
+    dest.setMax(simple_config.get(Setting.MAX_BACKUPS_IN_FILENIO))
     model.reinitialize()
 
     start = time.local(2023, 1, 1)
@@ -1148,7 +1148,7 @@ async def test_generational_delete_dst_start_rome_3_00(time: FakeTime, model: Mo
     time.setTimeZone("Europe/Rome")
 
     simple_config.override(Setting.MAX_BACKUPS_IN_HA, 1)
-    simple_config.override(Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE, 8)
+    simple_config.override(Setting.MAX_BACKUPS_IN_FILENIO, 8)
     simple_config.override(Setting.DAYS_BETWEEN_BACKUPS, 1)
     simple_config.override(Setting.BACKUP_TIME_OF_DAY, "03:00")
     simple_config.override(Setting.GENERATIONAL_DAYS, 3)
@@ -1157,7 +1157,7 @@ async def test_generational_delete_dst_start_rome_3_00(time: FakeTime, model: Mo
     simple_config.override(Setting.GENERATIONAL_DELETE_EARLY, True)
 
     source.setMax(simple_config.get(Setting.MAX_BACKUPS_IN_HA))
-    dest.setMax(simple_config.get(Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE))
+    dest.setMax(simple_config.get(Setting.MAX_BACKUPS_IN_FILENIO))
     model.reinitialize()
 
     start = time.local(2023, 1, 1)
@@ -1195,7 +1195,7 @@ async def test_generational_delete_dst_end_rome(time: FakeTime, model: Model, de
     time.setTimeZone("Europe/Rome")
 
     simple_config.override(Setting.MAX_BACKUPS_IN_HA, 1)
-    simple_config.override(Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE, 8)
+    simple_config.override(Setting.MAX_BACKUPS_IN_FILENIO, 8)
     simple_config.override(Setting.DAYS_BETWEEN_BACKUPS, 1)
     simple_config.override(Setting.BACKUP_TIME_OF_DAY, "02:00")
     simple_config.override(Setting.GENERATIONAL_DAYS, 3)
@@ -1204,7 +1204,7 @@ async def test_generational_delete_dst_end_rome(time: FakeTime, model: Model, de
     simple_config.override(Setting.GENERATIONAL_DELETE_EARLY, True)
 
     source.setMax(simple_config.get(Setting.MAX_BACKUPS_IN_HA))
-    dest.setMax(simple_config.get(Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE))
+    dest.setMax(simple_config.get(Setting.MAX_BACKUPS_IN_FILENIO))
     model.reinitialize()
 
     start = time.local(2023, 6, 1)
@@ -1242,7 +1242,7 @@ async def test_generational_delete_dst_end_rome_2_30(time: FakeTime, model: Mode
     time.setTimeZone("Europe/Rome")
 
     simple_config.override(Setting.MAX_BACKUPS_IN_HA, 1)
-    simple_config.override(Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE, 8)
+    simple_config.override(Setting.MAX_BACKUPS_IN_FILENIO, 8)
     simple_config.override(Setting.DAYS_BETWEEN_BACKUPS, 1)
     simple_config.override(Setting.BACKUP_TIME_OF_DAY, "02:30")
     simple_config.override(Setting.GENERATIONAL_DAYS, 3)
@@ -1251,7 +1251,7 @@ async def test_generational_delete_dst_end_rome_2_30(time: FakeTime, model: Mode
     simple_config.override(Setting.GENERATIONAL_DELETE_EARLY, True)
 
     source.setMax(simple_config.get(Setting.MAX_BACKUPS_IN_HA))
-    dest.setMax(simple_config.get(Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE))
+    dest.setMax(simple_config.get(Setting.MAX_BACKUPS_IN_FILENIO))
     model.reinitialize()
 
     start = time.local(2023, 6, 1)
@@ -1289,7 +1289,7 @@ async def test_generational_delete_dst_end_rome_3_00(time: FakeTime, model: Mode
     time.setTimeZone("Europe/Rome")
 
     simple_config.override(Setting.MAX_BACKUPS_IN_HA, 1)
-    simple_config.override(Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE, 8)
+    simple_config.override(Setting.MAX_BACKUPS_IN_FILENIO, 8)
     simple_config.override(Setting.DAYS_BETWEEN_BACKUPS, 1)
     simple_config.override(Setting.BACKUP_TIME_OF_DAY, "03:00")
     simple_config.override(Setting.GENERATIONAL_DAYS, 3)
@@ -1298,7 +1298,7 @@ async def test_generational_delete_dst_end_rome_3_00(time: FakeTime, model: Mode
     simple_config.override(Setting.GENERATIONAL_DELETE_EARLY, True)
 
     source.setMax(simple_config.get(Setting.MAX_BACKUPS_IN_HA))
-    dest.setMax(simple_config.get(Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE))
+    dest.setMax(simple_config.get(Setting.MAX_BACKUPS_IN_FILENIO))
     model.reinitialize()
 
     start = time.local(2023, 6, 1)

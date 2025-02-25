@@ -13,7 +13,7 @@ from aiohttp.web import HTTPException, Request, HTTPSeeOther, HTTPNotFound
 from injector import ClassAssistedBuilder, ProviderOf, inject, singleton
 
 from backup.config import Config, Setting, CreateOptions, BoolValidator, Startable, Version, VERSION
-from backup.const import SOURCE_GOOGLE_DRIVE, SOURCE_HA, GITHUB_BUG_TEMPLATE
+from backup.const import SOURCE_FILENIO, SOURCE_HA, GITHUB_BUG_TEMPLATE
 from backup.model import Coordinator, Backup, AbstractBackup
 from backup.exceptions import KnownError, GoogleCredGenerateError, ensureKey
 from backup.util import GlobalInfo, Estimator, DataCache, UpgradeFlags
@@ -292,7 +292,7 @@ class UiServer(Trigger, Startable):
             request.query.get("retain_ha", False))
         note = request.query.get("note", None)
         options = CreateOptions(self._time.now(), custom_name, {
-            SOURCE_GOOGLE_DRIVE: retain_drive,
+            SOURCE_FILENIO: retain_drive,
             SOURCE_HA: retain_ha
         }, note=note)
         backup = await self._coord.startBackup(options)
@@ -377,7 +377,7 @@ class UiServer(Trigger, Startable):
             resp.content_type = 'text/html'
         else:
             resp.content_type = 'text/plain'
-            resp.headers['Content-Disposition'] = 'attachment; filename="home-assistant-google-drive-backup.log"'
+            resp.headers['Content-Disposition'] = 'attachment; filename="home-assistant-filenio-backup.log"'
 
         await resp.prepare(request)
 

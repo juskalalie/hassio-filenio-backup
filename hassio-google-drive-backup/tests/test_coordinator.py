@@ -478,14 +478,14 @@ async def test_max_sync_interval_next_sync_attempt(coord: Coordinator, model, so
 async def test_generational_only_ignored_snapshots(coord: Coordinator, model, source: HelperTestSource, dest: HelperTestSource, time: FakeTime, simple_config: Config, global_info: GlobalInfo):
     """
     Verifies a sync with generational settings and only ignored snapshots doesn't cause an error.
-    Setup is taken from https://github.com/sabeechen/hassio-google-drive-backup/issues/727
+    Setup is taken from https://github.com/sabeechen/hassio-filenio-backup/issues/727
     """
     simple_config.override(Setting.DAYS_BETWEEN_BACKUPS, 1)
     simple_config.override(Setting.GENERATIONAL_DAYS, 3)
     simple_config.override(Setting.GENERATIONAL_WEEKS, 4)
     simple_config.override(Setting.GENERATIONAL_DELETE_EARLY, True)
     simple_config.override(Setting.MAX_BACKUPS_IN_HA, 2)
-    simple_config.override(Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE, 6)
+    simple_config.override(Setting.MAX_BACKUPS_IN_FILENIO, 6)
 
     backup = source.insert("Fri", time.toUtc(time.local(2020, 3, 16, 3, 33)))
     backup.setIgnore(True)

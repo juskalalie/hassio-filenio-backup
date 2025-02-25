@@ -753,7 +753,7 @@ async def test_upgrade_default_config(ha: HaSource, supervisor: SimulatedSupervi
     # overwrite the addon options with old values
     supervisor._options = {
         Setting.DEPRECTAED_MAX_BACKUPS_IN_HA.value: 4,
-        Setting.DEPRECTAED_MAX_BACKUPS_IN_GOOGLE_DRIVE.value: 4,
+        Setting.DEPRECTAED_MAX_BACKUPS_IN_FILENIO.value: 4,
         Setting.DEPRECATED_DAYS_BETWEEN_BACKUPS.value: 3,
         Setting.USE_SSL.value: False,
     }
@@ -766,7 +766,7 @@ async def test_upgrade_default_config(ha: HaSource, supervisor: SimulatedSupervi
     # Verify the config was upgraded
     assert supervisor._options == {
         Setting.MAX_BACKUPS_IN_HA.value: 4,
-        Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE.value: 4,
+        Setting.MAX_BACKUPS_IN_FILENIO.value: 4,
         Setting.DAYS_BETWEEN_BACKUPS.value: 3,
         Setting.CALL_BACKUP_SNAPSHOT.value: True,
     }
@@ -779,7 +779,7 @@ async def test_upgrade_all_config(ha: HaSource, supervisor: SimulatedSupervisor,
     # overwrite the addon options with old values
     supervisor._options = {
         Setting.DEPRECTAED_MAX_BACKUPS_IN_HA.value: 1,
-        Setting.DEPRECTAED_MAX_BACKUPS_IN_GOOGLE_DRIVE.value: 2,
+        Setting.DEPRECTAED_MAX_BACKUPS_IN_FILENIO.value: 2,
         Setting.DEPRECATED_DAYS_BETWEEN_BACKUPS.value: 5,
         Setting.DEPRECTAED_IGNORE_OTHER_BACKUPS.value: True,
         Setting.DEPRECTAED_IGNORE_UPGRADE_BACKUPS.value: True,
@@ -800,7 +800,7 @@ async def test_upgrade_all_config(ha: HaSource, supervisor: SimulatedSupervisor,
     # Verify the config was upgraded
     assert supervisor._options == {
         Setting.MAX_BACKUPS_IN_HA.value: 1,
-        Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE.value: 2,
+        Setting.MAX_BACKUPS_IN_FILENIO.value: 2,
         Setting.DAYS_BETWEEN_BACKUPS.value: 5,
         Setting.IGNORE_OTHER_BACKUPS.value: True,
         Setting.IGNORE_UPGRADE_BACKUPS.value: True,
@@ -828,7 +828,7 @@ async def test_upgrade_some_config(ha: HaSource, supervisor: SimulatedSupervisor
     # overwrite the addon options with old values
     supervisor._options = {
         Setting.DEPRECTAED_MAX_BACKUPS_IN_HA.value: 4,
-        Setting.DEPRECTAED_MAX_BACKUPS_IN_GOOGLE_DRIVE.value: 4,
+        Setting.DEPRECTAED_MAX_BACKUPS_IN_FILENIO.value: 4,
         Setting.DEPRECATED_DAYS_BETWEEN_BACKUPS.value: 3,
         Setting.DEPRECTAED_BACKUP_TIME_OF_DAY.value: "01:11",
         Setting.EXCLUDE_ADDONS.value: "test",
@@ -843,7 +843,7 @@ async def test_upgrade_some_config(ha: HaSource, supervisor: SimulatedSupervisor
     # Verify the config was upgraded
     assert supervisor._options == {
         Setting.MAX_BACKUPS_IN_HA.value: 4,
-        Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE.value: 4,
+        Setting.MAX_BACKUPS_IN_FILENIO.value: 4,
         Setting.DAYS_BETWEEN_BACKUPS.value: 3,
         Setting.EXCLUDE_ADDONS.value: "test",
         Setting.BACKUP_TIME_OF_DAY.value: "01:11",
@@ -858,7 +858,7 @@ async def test_upgrade_no_config(ha: HaSource, supervisor: SimulatedSupervisor, 
     # overwrite the addon options with old values
     supervisor._options = {
         Setting.MAX_BACKUPS_IN_HA.value: 4,
-        Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE.value: 4,
+        Setting.MAX_BACKUPS_IN_FILENIO.value: 4,
         Setting.DAYS_BETWEEN_BACKUPS.value: 3,
         Setting.BACKUP_TIME_OF_DAY.value: "01:11",
         Setting.EXCLUDE_ADDONS.value: "test"
@@ -872,7 +872,7 @@ async def test_upgrade_no_config(ha: HaSource, supervisor: SimulatedSupervisor, 
     # Verify the config was upgraded
     assert supervisor._options == {
         Setting.MAX_BACKUPS_IN_HA.value: 4,
-        Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE.value: 4,
+        Setting.MAX_BACKUPS_IN_FILENIO.value: 4,
         Setting.DAYS_BETWEEN_BACKUPS.value: 3,
         Setting.BACKUP_TIME_OF_DAY.value: "01:11",
         Setting.EXCLUDE_ADDONS.value: "test",

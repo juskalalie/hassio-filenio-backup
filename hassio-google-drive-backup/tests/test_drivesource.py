@@ -286,7 +286,7 @@ async def test_drive_timeout(drive, config, time: FakeTime):
     # Ensure we have credentials
     await drive.get()
 
-    config.override(Setting.GOOGLE_DRIVE_TIMEOUT_SECONDS, 0.000001)
+    config.override(Setting.FILENIO_TIMEOUT_SECONDS, 0.000001)
     with pytest.raises(GoogleTimeoutError):
         await drive.get()
     assert time.sleeps == []

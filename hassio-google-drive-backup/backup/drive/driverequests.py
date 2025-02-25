@@ -185,7 +185,7 @@ class DriveRequests():
             q = {
                 "q": query,
                 "fields": QUERY_FIELDS,
-                "pageSize": self.config.get(Setting.GOOGLE_DRIVE_PAGE_SIZE),
+                "pageSize": self.config.get(Setting.FILENIO_PAGE_SIZE),
                 "supportsAllDrives": "true",
                 "includeItemsFromAllDrives": "true",
                 "corpora": "allDrives"

@@ -1,5 +1,5 @@
 ## Contributing with Cryptocurrency
-Below are the addresses and relevant QR Codes for contributiong to the project with Monreo, Ethereum and Bitcoin.  Thank you for considering!  If you'd like to donate using a currency not listed, make an [issue](https://github.com/sabeechen/hassio-google-drive-backup/issues) so I can consider it.  Cryptocurrency might be the purest way to contribute, because I have no way of knowing who you are.  Your anonymous support is appreciated <3
+Below are the addresses and relevant QR Codes for contributiong to the project with Monreo, Ethereum and Bitcoin.  Thank you for considering!  If you'd like to donate using a currency not listed, make an [issue](https://github.com/sabeechen/hassio-filenio-backup/issues) so I can consider it.  Cryptocurrency might be the purest way to contribute, because I have no way of knowing who you are.  Your anonymous support is appreciated <3
 <br><br>
 ### <img src="images/monero-button.svg" width="200" /><br>
 <img src="images/monero-qr.svg" width="200" />

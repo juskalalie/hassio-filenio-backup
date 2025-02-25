@@ -84,7 +84,7 @@ class SimulatedSupervisor(BaseServer):
     def defaultOptions(self):
         return {
             "max_backups_in_ha": 4,
-            "max_backups_in_google_drive": 4,
+            "max_backups_in_filenio": 4,
             "days_between_backups": 3
         }
 
@@ -205,7 +205,7 @@ class SimulatedSupervisor(BaseServer):
 
     async def _logoAddon(self, request: Request):
         await self._verifyHeader(request)
-        return FileResponse('hassio-google-drive-backup/backup/static/images/logo.png')
+        return FileResponse('hassio-filenio-backup/backup/static/images/logo.png')
 
     async def _startAddon(self, request: Request):
         await self._verifyHeader(request)

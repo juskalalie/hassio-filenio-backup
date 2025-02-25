@@ -1,5 +1,5 @@
 
-SOURCE_GOOGLE_DRIVE = "GoogleDrive"
+SOURCE_FILENIO = "GoogleDrive"
 SOURCE_HA = "HomeAssistant"
 
 ERROR_PLEASE_WAIT = "please_wait"
@@ -49,7 +49,7 @@ NECESSARY_PROP_KEY_NAME = "snapshot_name"
 PROP_NOTE = "note"
 
 DRIVE_FOLDER_URL_FORMAT = "https://drive.google.com/drive/u/0/folders/{0}"
-GITHUB_ISSUE_URL = "https://github.com/sabeechen/hassio-google-drive-backup/issues/new?labels[]=People%20Management&labels[]=[Type]%20Bug&title={title}&assignee=sabeechen&body={body}"
+GITHUB_ISSUE_URL = "https://github.com/sabeechen/hassio-filenio-backup/issues/new?labels[]=People%20Management&labels[]=[Type]%20Bug&title={title}&assignee=sabeechen&body={body}"
 GITHUB_BUG_TEMPLATE = """
 ###### Description:
 ```

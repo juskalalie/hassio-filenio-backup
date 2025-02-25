@@ -128,7 +128,7 @@ def defaultAnd(config={}):
     ret = {
         Setting.DAYS_BETWEEN_BACKUPS: 3,
         Setting.MAX_BACKUPS_IN_HA: 4,
-        Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE: 4
+        Setting.MAX_BACKUPS_IN_FILENIO: 4
     }
     ret.update(config)
     return (ret, False)
@@ -179,13 +179,13 @@ def test_config_upgrade():
     # Test specifying multiple values
     config = Config()
     config.update({
-        Setting.DEPRECTAED_MAX_BACKUPS_IN_GOOGLE_DRIVE: 21,
+        Setting.DEPRECTAED_MAX_BACKUPS_IN_FILENIO: 21,
         Setting.DEPRECTAED_MAX_BACKUPS_IN_HA: 20,
         Setting.DEPRECATED_BACKUP_PASSWORD: "boop"
     })
     assert config.getAllConfig() == defaultAnd({
         Setting.MAX_BACKUPS_IN_HA: 20,
-        Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE: 21,
+        Setting.MAX_BACKUPS_IN_FILENIO: 21,
         Setting.BACKUP_PASSWORD: "boop",
         Setting.CALL_BACKUP_SNAPSHOT: True
     })[0]

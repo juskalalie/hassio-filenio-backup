@@ -10,7 +10,7 @@ from injector import inject, singleton
 from ..util import AsyncHttpGetter, GlobalInfo
 from ..config import Config, Setting, CreateOptions
 from ..config.byteformatter import ByteFormatter
-from ..const import SOURCE_GOOGLE_DRIVE
+from ..const import SOURCE_FILENIO
 from ..exceptions import (BackupFolderInaccessible,
                           ExistingBackupFolderError,
                           GoogleDrivePermissionDenied, 
@@ -70,13 +70,13 @@ class DriveSource(BackupDestination):
         return self.drivebackend.might_be_oob_creds
 
     def name(self) -> str:
-        return SOURCE_GOOGLE_DRIVE
+        return SOURCE_FILENIO
 
     def title(self) -> str:
         return "Google Drive"
 
     def maxCount(self) -> None:
-        return self.config.get(Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE)
+        return self.config.get(Setting.MAX_BACKUPS_IN_FILENIO)
 
     def upload(self) -> bool:
         return self.config.get(Setting.ENABLE_DRIVE_UPLOAD)
@@ -106,7 +106,7 @@ class DriveSource(BackupDestination):
                 existing.get('id'), existing.get('name'))
 
     def icon(self) -> str:
-        return "google-drive"
+        return "filenio"
 
     def isWorking(self):
         return self._uploadedAtLeastOneChunk

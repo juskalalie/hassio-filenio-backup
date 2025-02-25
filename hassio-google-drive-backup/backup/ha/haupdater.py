@@ -9,7 +9,7 @@ from ..util import GlobalInfo, Backoff, Estimator
 from .harequests import HaRequests
 from ..time import Time
 from ..worker import Worker
-from ..const import SOURCE_HA, SOURCE_GOOGLE_DRIVE
+from ..const import SOURCE_HA, SOURCE_FILENIO
 from ..logger import getLogger
 
 logger = getLogger(__name__)
@@ -144,7 +144,7 @@ class HaUpdater(Worker):
                 "slug": backup.slug()
             }
         ha_backups = list(filter(lambda s: s.getSource(SOURCE_HA) is not None, backups))
-        drive_backups = list(filter(lambda s: s.getSource(SOURCE_GOOGLE_DRIVE) is not None, backups))
+        drive_backups = list(filter(lambda s: s.getSource(SOURCE_FILENIO) is not None, backups))
 
         last_uploaded = "Never"
         if len(drive_backups) > 0:
@@ -155,10 +155,10 @@ class HaUpdater(Worker):
                 "attributes": {
                     "friendly_name": "Snapshot State",
                     "last_snapshot": last,  # type: ignore
-                    "snapshots_in_google_drive": len(drive_backups),
+                    "snapshots_in_filenio": len(drive_backups),
                     "snapshots_in_hassio": len(ha_backups),
                     "snapshots_in_home_assistant": len(ha_backups),
-                    "size_in_google_drive": Estimator.asSizeString(sum(map(lambda v: v.sizeInt(), drive_backups))),
+                    "size_in_filenio": Estimator.asSizeString(sum(map(lambda v: v.sizeInt(), drive_backups))),
                     "size_in_home_assistant": Estimator.asSizeString(sum(map(lambda v: v.sizeInt(), ha_backups))),
                     "snapshots": list(map(makeBackupData, backups))
                 }
@@ -173,16 +173,16 @@ class HaUpdater(Worker):
                 "last_backup": last,  # type: ignore
                 "next_backup": next,
                 "last_uploaded": last_uploaded,
-                "backups_in_google_drive": len(drive_backups),
+                "backups_in_filenio": len(drive_backups),
                 "backups_in_home_assistant": len(ha_backups),
-                "size_in_google_drive": Estimator.asSizeString(sum(map(lambda v: v.sizeInt(), drive_backups))),
+                "size_in_filenio": Estimator.asSizeString(sum(map(lambda v: v.sizeInt(), drive_backups))),
                 "size_in_home_assistant": Estimator.asSizeString(sum(map(lambda v: v.sizeInt(), ha_backups))),
                 "backups": list(map(makeBackupData, backups))
             }
-            if SOURCE_GOOGLE_DRIVE in source_metrics and 'free_space' in source_metrics[SOURCE_GOOGLE_DRIVE]:
-                attr["free_space_in_google_drive"] = source_metrics[SOURCE_GOOGLE_DRIVE]['free_space']
+            if SOURCE_FILENIO in source_metrics and 'free_space' in source_metrics[SOURCE_FILENIO]:
+                attr["free_space_in_filenio"] = source_metrics[SOURCE_FILENIO]['free_space']
             else:
-                attr["free_space_in_google_drive"] = ""
+                attr["free_space_in_filenio"] = ""
             return {
                 "state": self._state(),
                 "attributes": attr

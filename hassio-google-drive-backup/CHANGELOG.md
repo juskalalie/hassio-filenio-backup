@@ -1,6 +1,6 @@
 ## v0.112.1 [2023-11-03]
 
-- Added warnings about using the "Stop Addons" feature.  I plan on removing this in the near future.  If you'd like to keep the feature around, please give your feedback in [this GitHub issue](https://github.com/sabeechen/hassio-google-drive-backup/issues/940).
+- Added warnings about using the "Stop Addons" feature.  I plan on removing this in the near future.  If you'd like to keep the feature around, please give your feedback in [this GitHub issue](https://github.com/sabeechen/hassio-filenio-backup/issues/940).
 - When backups are stuck in the "pending" state, the addon now provides you with the Supervisor logs to help figure out whats wrong.
 - Added support for the "exclude Home Assistant database" options for automatic backups
 - Added configuration options to limit the speed of uploads to Google Drive

@@ -2,7 +2,7 @@
 
 ## About the project
 
-The project is mostly maintained by juskalalie@gmail.com, and is a fork from [the original Google Drive backup add-on](https://github.com/sabeechen/hassio-google-drive-backup) from Stephen Beechen (stephen@beechens.com). Before digging in to this, you might be helpful to familiarize yourself with some of the technologies used in the project.
+The project is mostly maintained by juskalalie@gmail.com, and is a fork from [the original Google Drive backup add-on](https://github.com/sabeechen/hassio-filenio-backup) from Stephen Beechen (stephen@beechens.com). Before digging in to this, you might be helpful to familiarize yourself with some of the technologies used in the project.
 
 - [Developing Addons for Home Assistant](https://developers.home-assistant.io/docs/add-ons) - Useful to understand how addons work.
 - [Python](https://www.python.org/) - The addon is written in Python 3.11 and makes heavy use of the asyncio framework.
@@ -12,11 +12,11 @@ The project is mostly maintained by juskalalie@gmail.com, and is a fork from [th
 - [Docker](https://www.docker.com/) - All Home Assistant addons run in their own Docker container, and while you could certainly contribute without knowing much about it, knowledge of the basic commands will help.
 
 ## Approval Process
- - Please only make PR's against the [dev branch](https://github.com/sabeechen/hassio-google-drive-backup/tree/dev).  Making a PR against master/main will result in an embarrassing song-and-dance where I ignore your PR for a little while, then ask you to remake it against dev, then ignore it again for a little while out of spite.  Neither of us wants this, and you can avoid it by making it against dev in the first place.
+ - Please only make PR's against the [dev branch](https://github.com/sabeechen/hassio-filenio-backup/tree/dev).  Making a PR against master/main will result in an embarrassing song-and-dance where I ignore your PR for a little while, then ask you to remake it against dev, then ignore it again for a little while out of spite.  Neither of us wants this, and you can avoid it by making it against dev in the first place.
  - If you're making a small change that fixes a bug I'm going to approve your PR quickly and heap you with praise.  If you make a huge change without talking to me first I'm going to review your PR slowly and move through it with suspicion.  A spectrum exists between those two extremes.  Please try to understand that I'm the one ultimately on the line for the addon's reputation.
    - Breaking up a large change into smaller manageable pieces make things easier.
    - You can reach out to me in any of these ways to talk about a change you're considering:
-     - Preferred: [File an issue on github](https://github.com/sabeechen/hassio-google-drive-backup/issues) proposing your changes.
+     - Preferred: [File an issue on github](https://github.com/sabeechen/hassio-filenio-backup/issues) proposing your changes.
      - Next best: Email: stephen@beechens.com
      - Acceptable but worst: Home Assistant Forums: [@sabeechen](https://community.home-assistant.io/u/sabeechen/summary)
  - Any submissions to the dev branch get automatically built and pushed to a staging version of the addon that you can install using [this repository](https://github.com/sabeechen/hgdb-dev-staging).  Its identical to the "Production" addon but talks to [https://dev.habackup.io](https://dev.habackup.io) instead of [https://habackup.io](https://habackup.io).
@@ -32,7 +32,7 @@ If the you open the repository folder in Visual Studio code with docker installe
 3. Install a git client. I like [GitHub Desktop](https://desktop.github.com/)
 4. Clone the project repository
    ```
-   https://github.com/sabeechen/hassio-google-drive-backup.git
+   https://github.com/sabeechen/hassio-filenio-backup.git
    ```
 5. Open Visual studio Code, go to the extension menu, and install the Desktop] (Python extension from Microsoft. It may prompt you to choose a Python interpreter (you want Python 3.11) and select a test framework (you want pytest).
 6. <kbd>File</kbd> > <kbd>Open Folder</kbd> to open the cloned repository folder.
@@ -53,7 +53,7 @@ Here are some pointers about how things work that might get you to where you wan
 
 ## Trying Out Changes
 
-To try out changes locally during development, I've written a server that simulates Home Assistant, Supervisor, habackup.io, and Google Drive HTTP endpoints that the addon expects in [simulationserver.py](https://github.com/sabeechen/hassio-google-drive-backup/blob/master/hassio-google-drive-backup/dev/simulationserver.py). It’s a beast of a class and does a lot. It simulates the services for development and is also used to make unit tests work.
+To try out changes locally during development, I've written a server that simulates Home Assistant, Supervisor, habackup.io, and Google Drive HTTP endpoints that the addon expects in [simulationserver.py](https://github.com/sabeechen/hassio-filenio-backup/blob/master/hassio-filenio-backup/dev/simulationserver.py). It’s a beast of a class and does a lot. It simulates the services for development and is also used to make unit tests work.
 
 To give it a shot, open up Visual Studio's "Run" Dialog and start up `Run Mock Backend Server`. Then also run one of these options:
 
@@ -72,19 +72,19 @@ Any submissions made to the dev branch (including PR's) get automatically built 
 For some changes, just testing locally might not be enough, you may want to run it as a real addon. You can do this roughly following the instruction for [Add-on Testing](https://developers.home-assistant.io/docs/add-ons/testing#local-build). Here are the two methods I've found work best:
 
 - ### Building a Local Addon Container in Home Assistant
-  Copy the folder `hassio-google-drive-backup` (the one with `config.json` inside it) into the local addon folder (you'll need the samba addon or something similar to do so). Modify the uploaded `config.json` to remove the `"image"` line near the bottom. Then in Home Assistant Web-UI go to <kbd>Supervisor</kbd> -> <kbd>Addon-Store</kbd>, <kbd>Reload</kbd>, and the addon should show up under "Local Addons". It should include buttons for building the container, starting/stopping etc.
+  Copy the folder `hassio-filenio-backup` (the one with `config.json` inside it) into the local addon folder (you'll need the samba addon or something similar to do so). Modify the uploaded `config.json` to remove the `"image"` line near the bottom. Then in Home Assistant Web-UI go to <kbd>Supervisor</kbd> -> <kbd>Addon-Store</kbd>, <kbd>Reload</kbd>, and the addon should show up under "Local Addons". It should include buttons for building the container, starting/stopping etc.
 - ### Building a container
   You could also build the container as a docker container locally, upload it to Docker Hub, and then have Home Assistant download the image. First install docker desktop, then:
   ```bash
-  > cd hassio-google-drive-backup
+  > cd hassio-filenio-backup
   > docker login
-  > docker build -f Dockerfile-addon -t YOUR_DOCKER_USERNAME/hassio-google-drive-backup-amd64:dev_testing --build-arg BUILD_FROM=homeassistant/amd64-base .
-  > docker push YOUR_DOCKER_USERNAME/hassio-google-drive-backup-amd64:dev-testing
+  > docker build -f Dockerfile-addon -t YOUR_DOCKER_USERNAME/hassio-filenio-backup-amd64:dev_testing --build-arg BUILD_FROM=homeassistant/amd64-base .
+  > docker push YOUR_DOCKER_USERNAME/hassio-filenio-backup-amd64:dev-testing
   ```
   Then make a folder in the local addon directory like before, but only copy in config.json. change these two keys in config.json to match what you uploaded:
   ```json
   {
-    "image": "YOUR_DOCKER_USERNAME/hassio-google-drive-backup-{arch}",
+    "image": "YOUR_DOCKER_USERNAME/hassio-filenio-backup-{arch}",
     "version": "dev-testing"
   }
   ```
@@ -98,10 +98,10 @@ I haven't tried using the Supervisor's new devcontainers for development yet (th
 You should be able to run tests from within the Visual Studio tests tab. Make sure all the tests pass before you to make a PR. You can also run them from the command line with:
 
 ```bash
-> python3.11 -m pytest hassio-google-drive-backup
+> python3.11 -m pytest hassio-filenio-backup
 ```
 
 ## Writing Tests
 
-Test dependencies get injected by `pytest`, which are defined in the [conftest.py](https://github.com/sabeechen/hassio-google-drive-backup/blob/master/hassio-google-drive-backup/tests/conftest.py) file. This is responsible for starting the simulation server, mocking necessary classes, etc.
-Most classes have their own test file in the [tests](https://github.com/sabeechen/hassio-google-drive-backup/tree/master/hassio-google-drive-backup/tests) directory. If you change anything in the code, you must also submit tests with your PR that verify that change. The only exception is that all the addon's JavaScript, I've never found a good way to do JavaScript tests.
+Test dependencies get injected by `pytest`, which are defined in the [conftest.py](https://github.com/sabeechen/hassio-filenio-backup/blob/master/hassio-filenio-backup/tests/conftest.py) file. This is responsible for starting the simulation server, mocking necessary classes, etc.
+Most classes have their own test file in the [tests](https://github.com/sabeechen/hassio-filenio-backup/tree/master/hassio-filenio-backup/tests) directory. If you change anything in the code, you must also submit tests with your PR that verify that change. The only exception is that all the addon's JavaScript, I've never found a good way to do JavaScript tests.

@@ -86,8 +86,8 @@ class DriveRequester():
     def buildTimeout(self):
         return ClientTimeout(
             sock_connect=self.config.get(
-                Setting.GOOGLE_DRIVE_TIMEOUT_SECONDS),
-            sock_read=self.config.get(Setting.GOOGLE_DRIVE_TIMEOUT_SECONDS))
+                Setting.FILENIO_TIMEOUT_SECONDS),
+            sock_read=self.config.get(Setting.FILENIO_TIMEOUT_SECONDS))
 
     async def raiseForKnownErrors(self, response):
         try:

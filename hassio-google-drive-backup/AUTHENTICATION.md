@@ -1,7 +1,7 @@
 # Authentication with Google Drive
 This document describes how the addon (Home Assistant Google Drive Backup) authenticates with Google Drive and stores your credentials.  It's geared toward those who wish to know more detail and is not necessary to take advantage of the full features of the addon.  The document is provided in the interest of providing full transparency into how the add-on works.  I've tried to describe this as plainly as possible, but it is technical and therefore may not be understandable to everyone.  Feedback on its clarity is appreciated.
 
- > This document describes how authentication works if you use the big blue "AUTHENTICATE WITH GOOGLE DRIVE" button in the addon.  If you're using [your own Google Drive credentials](https://github.com/sabeechen/hassio-google-drive-backup/blob/master/LOCAL_AUTH.md), then none of this applies.
+ > This document describes how authentication works if you use the big blue "AUTHENTICATE WITH GOOGLE DRIVE" button in the addon.  If you're using [your own Google Drive credentials](https://github.com/sabeechen/hassio-filenio-backup/blob/master/LOCAL_AUTH.md), then none of this applies.
 
 ## Your Credentials and the Needed Permission 
 To have access to any information in Google Drive, Google's authentication servers must be told that the add-on has the permission.  The add-on uses [Google Drive's Rest API (v3)](https://developers.google.com/drive/api/v3/about-sdk) for communication and requests the [drive.file](https://developers.google.com/drive/api/v3/about-auth) permission *scope*.  This *scope* means the add-on has access to files and folders that the add-on created, but nothing else.  It can't see files you've added to Google Drive through their web interface or anywhere else.  Google Drive's Rest API allows the addon to periodically check what backups are uploaded and upload new ones if necessary by making requests over the internet.  
@@ -27,7 +27,7 @@ Google puts some limitations on how the access token must be generated that will
 These limitations make a technical problem for the addon because most people's Home Assistant instances aren't publicly accessible and the address is different for each one. Performing the authentication workflow exactly as described above won't work.  To get around this, I (the developer of this addon) set up a website, https://habackup.io, which serves as the known public and statically addressable website that Google redirects from/to.  The source code for this server is available within the add-on's GitHub repository.
 
 So when you authenticate the add-on, the workflow looks like this:
-1. You start at the add-on's web interface, something like https://homeassistant.local:8123/ingress/hassio_google_drive_backup
+1. You start at the add-on's web interface, something like https://homeassistant.local:8123/ingress/hassio_filenio_backup
 2.  You click the "Authenticate With Google Drive" button, which takes note of the address of your Home Assistant installation (https://homeassistant.local:8123 in this case) and sends you to https://habackup.io/drive/authorize
 3. https://habackup.io immediately generates the Google login URL for you and redirects you to https://accounts.google.com
 4.  You log in with your Google credentials on Google's domain, and confirm you want to give the add-on permission to see files and folders it creates (the drive.file scope)

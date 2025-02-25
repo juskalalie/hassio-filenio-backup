@@ -308,7 +308,7 @@ class GoogleDrivePermissionDenied(KnownError):
         return "Google Drive denied the request due to permissions."
 
     def code(self):
-        return "google_drive_permissions"
+        return "filenio_permissions"
 
 
 class LowSpaceError(KnownError):

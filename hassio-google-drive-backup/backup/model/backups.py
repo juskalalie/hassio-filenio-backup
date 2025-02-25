@@ -4,7 +4,7 @@ from typing import Dict, Optional, Union
 from dateutil.tz import tzutc
 from ..util import Estimator
 
-from ..const import SOURCE_GOOGLE_DRIVE, SOURCE_HA
+from ..const import SOURCE_FILENIO, SOURCE_HA
 from ..logger import getLogger
 from ..config import CreateOptions
 
@@ -266,7 +266,7 @@ class Backup(object):
             if status:
                 return status
 
-        inDrive = self.getSource(SOURCE_GOOGLE_DRIVE) is not None
+        inDrive = self.getSource(SOURCE_FILENIO) is not None
         inHa = self.getSource(SOURCE_HA) is not None
 
         if inDrive and inHa:

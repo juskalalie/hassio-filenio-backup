@@ -8,13 +8,13 @@ Quickly set up a backup strategy without much fuss. It doesn't require much fami
 
 >This project requires financial support to make the Google Drive integration work, but it is free for you to use.  You can join those helping to keep the lights on at:
 >  
->[<img src="https://raw.githubusercontent.com/sabeechen/hassio-google-drive-backup/master/images/bmc-button.svg" width=150 height=40 style="margin: 5px"/>](https://www.buymeacoffee.com/sabeechen)
->[<img src="https://raw.githubusercontent.com/sabeechen/hassio-google-drive-backup/master/images/paypal-button.svg" width=150 height=40 style="margin: 5px"/>](https://www.paypal.com/paypalme/stephenbeechen)
->[<img src="https://raw.githubusercontent.com/sabeechen/hassio-google-drive-backup/master/images/patreon-button.svg" width=150 height=40 style="margin: 5px"/>](https://www.patreon.com/bePatron?u=4064183)
->[<img src="https://raw.githubusercontent.com/sabeechen/hassio-google-drive-backup/master/images/github-sponsors-button.svg" width=150 height=40 style="margin: 5px"/>](https://github.com/sponsors/sabeechen)
->[<img src="https://raw.githubusercontent.com/sabeechen/hassio-google-drive-backup/master/images/monero-button.svg" width=150 height=40 style="margin: 5px"/>](https://github.com/sabeechen/hassio-google-drive-backup/blob/master/donate-crypto.md)
->[<img src="https://raw.githubusercontent.com/sabeechen/hassio-google-drive-backup/master/images/bitcoin-button.svg" width=150 height=40 style="margin: 5px"/>](https://github.com/sabeechen/hassio-google-drive-backup/blob/master/donate-crypto.md)
->[<img src="https://raw.githubusercontent.com/sabeechen/hassio-google-drive-backup/master/images/ethereum-button.svg" width=150 height=40 style="margin: 5px"/>](https://github.com/sabeechen/hassio-google-drive-backup/blob/master/donate-crypto.md)
+>[<img src="https://raw.githubusercontent.com/sabeechen/hassio-filenio-backup/master/images/bmc-button.svg" width=150 height=40 style="margin: 5px"/>](https://www.buymeacoffee.com/sabeechen)
+>[<img src="https://raw.githubusercontent.com/sabeechen/hassio-filenio-backup/master/images/paypal-button.svg" width=150 height=40 style="margin: 5px"/>](https://www.paypal.com/paypalme/stephenbeechen)
+>[<img src="https://raw.githubusercontent.com/sabeechen/hassio-filenio-backup/master/images/patreon-button.svg" width=150 height=40 style="margin: 5px"/>](https://www.patreon.com/bePatron?u=4064183)
+>[<img src="https://raw.githubusercontent.com/sabeechen/hassio-filenio-backup/master/images/github-sponsors-button.svg" width=150 height=40 style="margin: 5px"/>](https://github.com/sponsors/sabeechen)
+>[<img src="https://raw.githubusercontent.com/sabeechen/hassio-filenio-backup/master/images/monero-button.svg" width=150 height=40 style="margin: 5px"/>](https://github.com/sabeechen/hassio-filenio-backup/blob/master/donate-crypto.md)
+>[<img src="https://raw.githubusercontent.com/sabeechen/hassio-filenio-backup/master/images/bitcoin-button.svg" width=150 height=40 style="margin: 5px"/>](https://github.com/sabeechen/hassio-filenio-backup/blob/master/donate-crypto.md)
+>[<img src="https://raw.githubusercontent.com/sabeechen/hassio-filenio-backup/master/images/ethereum-button.svg" width=150 height=40 style="margin: 5px"/>](https://github.com/sabeechen/hassio-filenio-backup/blob/master/donate-crypto.md)
 
 
 ### Features
@@ -30,5 +30,5 @@ Quickly set up a backup strategy without much fuss. It doesn't require much fami
 - Comprehensive documentation.
 - _Most certainly_ doesn't mine bitcoin on your home automation server. Definitely no.
 
-See the [README on GitHub](https://github.com/sabeechen/hassio-google-drive-backup) for all the details, or just install the add-on and open the Web UI.
+See the [README on GitHub](https://github.com/sabeechen/hassio-filenio-backup) for all the details, or just install the add-on and open the Web UI.
 The Web-UI explains everything you have to do.

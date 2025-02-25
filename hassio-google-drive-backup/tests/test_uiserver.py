@@ -18,7 +18,7 @@ from backup.ui import UiServer, Restarter
 from backup.config import Config, Setting, CreateOptions
 from backup.const import (ERROR_CREDS_EXPIRED, ERROR_EXISTING_FOLDER,
                           ERROR_MULTIPLE_DELETES, ERROR_NO_BACKUP,
-                          SOURCE_GOOGLE_DRIVE, SOURCE_HA)
+                          SOURCE_FILENIO, SOURCE_HA)
 from backup.creds import Creds
 from backup.model import Coordinator, Backup
 from backup.drive import DriveSource, FolderFinder, OOB_CRED_CUTOFF
@@ -87,17 +87,17 @@ async def test_getstatus(reader, config: Config, ha, server, ports: Ports):
     assert data['backup_name_template'] == config.get(Setting.BACKUP_NAME)
     assert data['warn_ingress_upgrade'] is False
     assert len(data['backups']) == 0
-    assert data['sources'][SOURCE_GOOGLE_DRIVE] == {
+    assert data['sources'][SOURCE_FILENIO] == {
         'deletable': 0,
-        'name': SOURCE_GOOGLE_DRIVE,
+        'name': SOURCE_FILENIO,
         'retained': 0,
         'backups': 0,
         'latest': None,
         'size': '0.0 B',
         'enabled': True,
-        'max': config.get(Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE),
+        'max': config.get(Setting.MAX_BACKUPS_IN_FILENIO),
         'title': "Google Drive",
-        'icon': 'google-drive',
+        'icon': 'filenio',
         'ignored': 0,
         'ignored_size': '0.0 B',
         'detail': "",
@@ -130,17 +130,17 @@ async def test_getstatus_sync(reader, config: Config, backup: Backup, time: Fake
     assert data['last_backup_text'] != "Never"
     assert data['next_backup_text'] != "right now"
     assert len(data['backups']) == 1
-    assert data['sources'][SOURCE_GOOGLE_DRIVE] == {
+    assert data['sources'][SOURCE_FILENIO] == {
         'deletable': 1,
-        'name': SOURCE_GOOGLE_DRIVE,
+        'name': SOURCE_FILENIO,
         'retained': 0,
         'backups': 1,
         'latest': time.asRfc3339String(time.now()),
-        'size': data['sources'][SOURCE_GOOGLE_DRIVE]['size'],
+        'size': data['sources'][SOURCE_FILENIO]['size'],
         'enabled': True,
-        'max': config.get(Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE),
+        'max': config.get(Setting.MAX_BACKUPS_IN_FILENIO),
         'title': "Google Drive",
-        'icon': 'google-drive',
+        'icon': 'filenio',
         'free_space': "5.0 GB",
         'ignored': 0,
         'ignored_size': '0.0 B',
@@ -172,17 +172,17 @@ async def test_retain(reader: ReaderHelper, config: Config, backup: Backup, coor
         'message': "Updated the backup's settings"
     }
     status = await reader.getjson("getstatus")
-    assert status['sources'][SOURCE_GOOGLE_DRIVE] == {
+    assert status['sources'][SOURCE_FILENIO] == {
         'deletable': 0,
-        'name': SOURCE_GOOGLE_DRIVE,
+        'name': SOURCE_FILENIO,
         'retained': 1,
         'backups': 1,
         'latest': time.asRfc3339String(backup.date()),
-        'size': status['sources'][SOURCE_GOOGLE_DRIVE]['size'],
+        'size': status['sources'][SOURCE_FILENIO]['size'],
         'enabled': True,
-        'max': config.get(Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE),
+        'max': config.get(Setting.MAX_BACKUPS_IN_FILENIO),
         'title': "Google Drive",
-        'icon': 'google-drive',
+        'icon': 'filenio',
         'free_space': "5.0 GB",
         'ignored': 0,
         'ignored_size': '0.0 B',
@@ -207,17 +207,17 @@ async def test_retain(reader: ReaderHelper, config: Config, backup: Backup, coor
 
     await reader.getjson("retain", json={'slug': slug, 'sources': {"GoogleDrive": False, "HomeAssistant": False}})
     status = await reader.getjson("getstatus")
-    assert status['sources'][SOURCE_GOOGLE_DRIVE] == {
+    assert status['sources'][SOURCE_FILENIO] == {
         'deletable': 1,
-        'name': SOURCE_GOOGLE_DRIVE,
+        'name': SOURCE_FILENIO,
         'retained': 0,
         'backups': 1,
         'latest': time.asRfc3339String(backup.date()),
-        'size': status['sources'][SOURCE_GOOGLE_DRIVE]['size'],
+        'size': status['sources'][SOURCE_FILENIO]['size'],
         'enabled': True,
-        'max': config.get(Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE),
+        'max': config.get(Setting.MAX_BACKUPS_IN_FILENIO),
         'title': "Google Drive",
-        'icon': 'google-drive',
+        'icon': 'filenio',
         'free_space': "5.0 GB",
         'ignored': 0,
         'ignored_size': '0.0 B',
@@ -246,17 +246,17 @@ async def test_retain(reader: ReaderHelper, config: Config, backup: Backup, coor
     await reader.getjson("deleteSnapshot", json=delete_req)
     await reader.getjson("retain", json={'slug': slug, 'sources': {"HomeAssistant": True}})
     status = await reader.getjson("getstatus")
-    assert status['sources'][SOURCE_GOOGLE_DRIVE] == {
+    assert status['sources'][SOURCE_FILENIO] == {
         'deletable': 0,
-        'name': SOURCE_GOOGLE_DRIVE,
+        'name': SOURCE_FILENIO,
         'retained': 0,
         'backups': 0,
         'latest': None,
-        'size': status['sources'][SOURCE_GOOGLE_DRIVE]['size'],
+        'size': status['sources'][SOURCE_FILENIO]['size'],
         'enabled': True,
-        'max': config.get(Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE),
+        'max': config.get(Setting.MAX_BACKUPS_IN_FILENIO),
         'title': "Google Drive",
-        'icon': 'google-drive',
+        'icon': 'filenio',
         'free_space': "5.0 GB",
         'ignored': 0,
         'ignored_size': '0.0 B',
@@ -282,9 +282,9 @@ async def test_retain(reader: ReaderHelper, config: Config, backup: Backup, coor
     # sync again, which should upoload the backup to Drive
     await coord.sync()
     status = await reader.getjson("getstatus")
-    assert status['sources'][SOURCE_GOOGLE_DRIVE]['backups'] == 1
-    assert status['sources'][SOURCE_GOOGLE_DRIVE]['retained'] == 0
-    assert status['sources'][SOURCE_GOOGLE_DRIVE]['backups'] == 1
+    assert status['sources'][SOURCE_FILENIO]['backups'] == 1
+    assert status['sources'][SOURCE_FILENIO]['retained'] == 0
+    assert status['sources'][SOURCE_FILENIO]['backups'] == 1
 
 
 @pytest.mark.asyncio
@@ -322,7 +322,7 @@ async def test_delete(reader: ReaderHelper, ui_server, backup):
     await reader.assertError("deleteSnapshot", json=data, error_type=ERROR_NO_BACKUP)
     status = await reader.getjson("getstatus")
     assert len(status['backups']) == 1
-    assert status['sources'][SOURCE_GOOGLE_DRIVE]['backups'] == 0
+    assert status['sources'][SOURCE_FILENIO]['backups'] == 0
     data["sources"] = ["HomeAssistant"]
     assert await reader.getjson("deleteSnapshot", json=data) == {"message": "Deleted from 1 place(s)"}
     status = await reader.getjson("getstatus")
@@ -502,7 +502,7 @@ async def test_drive_cred_generation(reader: ReaderHelper, ui_server: UiServer, 
 @pytest.mark.asyncio
 async def test_confirm_multiple_deletes(reader, ui_server, server, config: Config, time: FakeTime, ha: HaSource):
     # reconfigure to only store 1 backup
-    config.override(Setting.MAX_BACKUPS_IN_GOOGLE_DRIVE, 1)
+    config.override(Setting.MAX_BACKUPS_IN_FILENIO, 1)
     config.override(Setting.MAX_BACKUPS_IN_HA, 1)
 
     # create three backups
@@ -515,8 +515,8 @@ async def test_confirm_multiple_deletes(reader, ui_server, server, config: Confi
     assert len(status['backups']) == 3
     assert status["last_error"]["error_type"] == ERROR_MULTIPLE_DELETES
     assert status["last_error"]["data"] == {
-        SOURCE_GOOGLE_DRIVE: 0,
-        SOURCE_GOOGLE_DRIVE + "_desc": '',
+        SOURCE_FILENIO: 0,
+        SOURCE_FILENIO + "_desc": '',
         SOURCE_HA: 2,
         SOURCE_HA + "_desc": "Name1\nName2"
     }
@@ -545,8 +545,8 @@ async def test_confirm_multiple_deletes(reader, ui_server, server, config: Confi
     assert len(status['backups']) == 3
     assert status["last_error"]["error_type"] == ERROR_MULTIPLE_DELETES
     assert status["last_error"]["data"] == {
-        SOURCE_GOOGLE_DRIVE: 0,
-        SOURCE_GOOGLE_DRIVE + "_desc": '',
+        SOURCE_FILENIO: 0,
+        SOURCE_FILENIO + "_desc": '',
         SOURCE_HA: 2,
         SOURCE_HA + "_desc": "Name1\nName1"
     }

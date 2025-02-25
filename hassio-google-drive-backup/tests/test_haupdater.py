@@ -44,10 +44,10 @@ async def test_init(updater: HaUpdater, global_info, supervisor: SimulatedSuperv
         'next_backup': time.now().isoformat(),
         'last_uploaded': 'Never',
         'backups': [],
-        'backups_in_google_drive': 0,
-        'free_space_in_google_drive': "",
+        'backups_in_filenio': 0,
+        'free_space_in_filenio': "",
         'backups_in_home_assistant': 0,
-        'size_in_google_drive': "0.0 B",
+        'size_in_filenio': "0.0 B",
         'size_in_home_assistant': '0.0 B'
     })
     assert supervisor.getNotification() is None
@@ -127,11 +127,11 @@ async def test_update_backups(updater: HaUpdater, server, time: FakeTime, superv
         'next_backup': time.now().isoformat(),
         'last_uploaded': 'Never',
         'backups': [],
-        'backups_in_google_drive': 0,
+        'backups_in_filenio': 0,
         'backups_in_home_assistant': 0,
         'size_in_home_assistant': "0.0 B",
-        'size_in_google_drive': "0.0 B",
-        'free_space_in_google_drive': ''
+        'size_in_filenio': "0.0 B",
+        'free_space_in_filenio': ''
     })
 
 
@@ -149,11 +149,11 @@ async def test_update_backups_no_next_backup(updater: HaUpdater, server, time: F
         'next_backup': None,
         'last_uploaded': 'Never',
         'backups': [],
-        'backups_in_google_drive': 0,
+        'backups_in_filenio': 0,
         'backups_in_home_assistant': 0,
         'size_in_home_assistant': "0.0 B",
-        'size_in_google_drive': "0.0 B",
-        'free_space_in_google_drive': ''
+        'size_in_filenio': "0.0 B",
+        'free_space_in_filenio': ''
     })
 
 
@@ -178,11 +178,11 @@ async def test_update_backups_sync(updater: HaUpdater, server, time: FakeTime, b
             'slug': backup.slug()
         }
         ],
-        'backups_in_google_drive': 1,
+        'backups_in_filenio': 1,
         'backups_in_home_assistant': 1,
         'size_in_home_assistant': Estimator.asSizeString(backup.size()),
-        'size_in_google_drive': Estimator.asSizeString(backup.size()),
-        'free_space_in_google_drive': '5.0 GB'
+        'size_in_filenio': Estimator.asSizeString(backup.size()),
+        'free_space_in_filenio': '5.0 GB'
     })
 
 
@@ -199,11 +199,11 @@ async def test_notification_link(updater: HaUpdater, server, time: FakeTime, glo
         'next_backup': time.now().isoformat(),
         'last_uploaded': 'Never',
         'backups': [],
-        'backups_in_google_drive': 0,
+        'backups_in_filenio': 0,
         'backups_in_home_assistant': 0,
         'size_in_home_assistant': "0.0 B",
-        'size_in_google_drive': "0.0 B",
-        'free_space_in_google_drive': ''
+        'size_in_filenio': "0.0 B",
+        'free_space_in_filenio': ''
     })
     assert supervisor.getNotification() is None
 
@@ -314,7 +314,7 @@ async def test_ignored_backups(updater: HaUpdater, time: FakeTime, server: Simul
     await coord.sync()
     await updater.update()
     state = supervisor.getAttributes("sensor.backup_state")
-    assert state["backups_in_google_drive"] == 1
+    assert state["backups_in_filenio"] == 1
     assert state["backups_in_home_assistant"] == 1
     assert len(state["backups"]) == 1
     assert state['last_backup'] == backup.date().isoformat()
@@ -341,11 +341,11 @@ async def test_update_backups_old_names(updater: HaUpdater, server, backup: Back
             'slug': backup.slug()
         }
         ],
-        'snapshots_in_google_drive': 1,
+        'snapshots_in_filenio': 1,
         'snapshots_in_home_assistant': 1,
         'snapshots_in_hassio': 1,
         'size_in_home_assistant': Estimator.asSizeString(backup.size()),
-        'size_in_google_drive': Estimator.asSizeString(backup.size())
+        'size_in_filenio': Estimator.asSizeString(backup.size())
     })
 
 
@@ -353,12 +353,12 @@ async def test_update_backups_old_names(updater: HaUpdater, server, backup: Back
 async def test_drive_free_space(updater: HaUpdater, time: FakeTime, server: SimulationServer, supervisor: SimulatedSupervisor, coord: Coordinator, config: Config):
     await updater.update()
     state = supervisor.getAttributes("sensor.backup_state")
-    assert state["free_space_in_google_drive"] == ""
+    assert state["free_space_in_filenio"] == ""
 
     await coord.sync()
     await updater.update()
     state = supervisor.getAttributes("sensor.backup_state")
-    assert state["free_space_in_google_drive"] == "5.0 GB"
+    assert state["free_space_in_filenio"] == "5.0 GB"
 
 
 @pytest.mark.asyncio
