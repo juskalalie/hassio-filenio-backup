@@ -1,6 +1,6 @@
 # Home Assistant filen.io Backup
 
-![screenshot](images/screenshot.png)
+#![screenshot](images/screenshot.png)
 
 ## About
 
