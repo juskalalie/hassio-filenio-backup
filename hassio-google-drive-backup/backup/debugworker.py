@@ -105,7 +105,7 @@ class DebugWorker(Worker):
     async def updateDns(self):
         self.last_dns_update = self.time.now()
         try:
-            # Resolve google's addresses
+            # Resolve filen.io's addresses
             self.dns_info = await self.getPingInfo()
             self._info.setDnsInfo(self.dns_info)
         except Exception as e:
