@@ -17,3 +17,4 @@ aiohttp-jinja2
 aioping
 pytz
 tzlocal
+pycryptodome
