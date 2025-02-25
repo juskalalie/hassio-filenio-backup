@@ -9,10 +9,10 @@
             "type": "python",
             "request": "launch",
             "python": "${command:python.interpreterPath}",
-            "module": "hassio-google-drive-backup.backup",
-            "args": ["--config", "hassio-google-drive-backup/dev/data/dev_options.json"],
+            "module": "hassio-filenio-backup.backup",
+            "args": ["--config", "hassio-filenio-backup/dev/data/dev_options.json"],
             "env": {
-                "PYTHONPATH": "${workspaceFolder}/hassio-google-drive-backup"
+                "PYTHONPATH": "${workspaceFolder}/hassio-filenio-backup"
             }
         },
         {
@@ -20,10 +20,10 @@
             "type": "python",
             "request": "launch",
             "python": "${command:python.interpreterPath}",
-            "module": "hassio-google-drive-backup.backup",
-            "args": ["--config", "hassio-google-drive-backup/dev/data/drive_dev_options.json"],
+            "module": "hassio-filenio-backup.backup",
+            "args": ["--config", "hassio-filenio-backup/dev/data/drive_dev_options.json"],
             "env": {
-                "PYTHONPATH": "${workspaceFolder}/hassio-google-drive-backup"
+                "PYTHONPATH": "${workspaceFolder}/hassio-filenio-backup"
             }
         },
         {
@@ -31,10 +31,10 @@
             "type": "python",
             "request": "launch",
             "python": "${command:python.interpreterPath}",
-            "module": "hassio-google-drive-backup.backup",
-            "args": ["--config", "hassio-google-drive-backup/dev/data/drive_options.json"],
+            "module": "hassio-filenio-backup.backup",
+            "args": ["--config", "hassio-filenio-backup/dev/data/drive_options.json"],
             "env": {
-                "PYTHONPATH": "${workspaceFolder}/hassio-google-drive-backup"
+                "PYTHONPATH": "${workspaceFolder}/hassio-filenio-backup"
             }
         },
         {
@@ -42,9 +42,9 @@
             "type": "python",
             "request": "launch",
             "python": "${command:python.interpreterPath}",
-            "module": "hassio-google-drive-backup.dev.simulationserver",
+            "module": "hassio-filenio-backup.dev.simulationserver",
             "env": {
-                "PYTHONPATH": "${workspaceFolder}/hassio-google-drive-backup"
+                "PYTHONPATH": "${workspaceFolder}/hassio-filenio-backup"
             }
         },
         {
@@ -52,9 +52,9 @@
             "type": "python",
             "request": "launch",
             "python": "${command:python.interpreterPath}",
-            "module": "hassio-google-drive-backup.backup.util.error_analyzer",
+            "module": "hassio-filenio-backup.backup.util.error_analyzer",
             "env": {
-                "PYTHONPATH": "${workspaceFolder}/hassio-google-drive-backup"
+                "PYTHONPATH": "${workspaceFolder}/hassio-filenio-backup"
             }
         },
         {
@@ -64,7 +64,7 @@
             "program": "${file}",
             "console": "externalTerminal",
             "env": {
-                "PYTHONPATH": "${workspaceFolder}/hassio-google-drive-backup"
+                "PYTHONPATH": "${workspaceFolder}/hassio-filenio-backup"
             }
         },
         {
@@ -73,14 +73,14 @@
             "request": "attach",
             "pathMappings": [
                 {
-                    "localRoot": "${workspaceFolder}/hassio-google-drive-backup",  // You may also manually specify the directory containing your source code.
+                    "localRoot": "${workspaceFolder}/hassio-filenio-backup",  // You may also manually specify the directory containing your source code.
                     "remoteRoot": "/app" // Linux example; adjust as necessary for your OS and situation.
                 }
             ],
             "port": 1627,                   // Set to the remote port.
             "host": "hassio",               // Set to your remote host's public IP address.
             "env": {
-                "PYTHONPATH": "${workspaceFolder}/hassio-google-drive-backup"
+                "PYTHONPATH": "${workspaceFolder}/hassio-filenio-backup"
             }
         },
         {
@@ -88,9 +88,9 @@
             "type": "python",
             "request": "launch",
             "python": "${command:python.interpreterPath}",
-            "module": "hassio-google-drive-backup.server",
+            "module": "hassio-filenio-backup.server",
             "env": {
-                "PYTHONPATH": "${workspaceFolder}/hassio-google-drive-backup",
+                "PYTHONPATH": "${workspaceFolder}/hassio-filenio-backup",
                 "PORT": "12345",
                 "CLIENT_SECRET": "client_secret",
                 "CLIENT_ID": "client_id"
@@ -101,9 +101,9 @@
             "type": "python",
             "request": "launch",
             "python": "${command:python.interpreterPath}",
-            "module": "hassio-google-drive-backup.dev.deploy_dev_addon",
+            "module": "hassio-filenio-backup.dev.deploy_dev_addon",
             "env": {
-                "PYTHONPATH": "${workspaceFolder}/hassio-google-drive-backup",
+                "PYTHONPATH": "${workspaceFolder}/hassio-filenio-backup",
                 "PORT": "12345",
                 "CLIENT_SECRET": "client_secret",
                 "CLIENT_ID": "client_id"
@@ -114,9 +114,9 @@
             "type": "python",
             "request": "launch",
             "python": "${command:python.interpreterPath}",
-            "module": "hassio-google-drive-backup.dev.deploy_server",
+            "module": "hassio-filenio-backup.dev.deploy_server",
             "env": {
-                "PYTHONPATH": "${workspaceFolder}/hassio-google-drive-backup",
+                "PYTHONPATH": "${workspaceFolder}/hassio-filenio-backup",
                 "PORT": "12345",
                 "CLIENT_SECRET": "client_secret",
                 "CLIENT_ID": "client_id"
@@ -127,9 +127,9 @@
             "type": "python",
             "request": "launch",
             "python": "${command:python.interpreterPath}",
-            "module": "hassio-google-drive-backup.dev.deploy_dev_server",
+            "module": "hassio-filenio-backup.dev.deploy_dev_server",
             "env": {
-                "PYTHONPATH": "${workspaceFolder}/hassio-google-drive-backup",
+                "PYTHONPATH": "${workspaceFolder}/hassio-filenio-backup",
                 "PORT": "12345",
                 "CLIENT_SECRET": "client_secret",
                 "CLIENT_ID": "client_id"
@@ -140,9 +140,9 @@
             "type": "python",
             "request": "launch",
             "python": "${command:python.interpreterPath}",
-            "module": "hassio-google-drive-backup.dev.deploy_addon",
+            "module": "hassio-filenio-backup.dev.deploy_addon",
             "env": {
-                "PYTHONPATH": "${workspaceFolder}/hassio-google-drive-backup",
+                "PYTHONPATH": "${workspaceFolder}/hassio-filenio-backup",
                 "PORT": "12345",
                 "CLIENT_SECRET": "client_secret",
                 "CLIENT_ID": "client_id"
